@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: tensorflow/tensorflow:1.4.0-gpu-py3
+
+%runscript
+ 
+    exec /usr/bin/python3 "$@"
+
+%post
+
+    # apt-get and pip3 installs
+    pip3 install keras==2.1.4
+    # in-container bind points for shared filesystems
+    mkdir -p /extra /xdisk /cm/shared /cm/local /rsgrps
